@@ -11,7 +11,7 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-mongoose.connect('mongodb://mongo:27017/omni9', {
+mongoose.connect('mongodb://127.0.0.1:27017/node', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
