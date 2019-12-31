@@ -6,6 +6,7 @@ cache:
     - "node_modules"
   yarn: true
 install:
+    - npm install -g nyc
     - npm install -g codecov
 script:
     - nyc ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
