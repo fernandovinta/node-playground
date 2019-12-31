@@ -63,10 +63,9 @@ describe("Test Authentication API", () => {
     .post("/login")
     .send({...data, password: "wrong password"})
     .end((err, res) => {
-      expect(res).to.have.status(200);
-      expect(res.body.user).exist;
-      expect(res.body.token).exist;
-      expect(res.body.user.email).to.equals(data.email)
+      expect(res).to.have.status(400);
+      expect(res.body.error).exist;
+      expect(res.body.error).to.equals("Invalid password")
       done();
     });
   });
