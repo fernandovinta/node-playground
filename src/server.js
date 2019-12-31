@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv').config({  
+  path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env"
+})
 
 const socketio = require('socket.io');
 const http = require('http');
@@ -11,9 +14,10 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-mongoose.connect('mongodb://127.0.0.1:27017/node', {
+mongoose.connect('mongodb://' + (process.env.DB_HOST ? process.env.DB_HOST : "127.0.0.1")  +':27017/node', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 const connectedUsers = {};
