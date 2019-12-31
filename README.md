@@ -9,3 +9,4 @@
 * Trevis CI
 * Tests with Mocha and Chai
 * Docker
+* Codecov.io
