@@ -5,8 +5,4 @@ cache:
   directories:
     - "node_modules"
   yarn: true
-install:
-    - npm install -g codecov
-script:
-    - ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-    - codecov
+after_success: yarn coverage

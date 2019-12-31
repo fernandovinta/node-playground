@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "test": "nyc node_modules/mocha/bin/_mocha --exit && codecov -F istanbul_mocha"
+    "test": "NODE_ENV=test nyc --reporter=lcov mocha --exit",
+    "coverage": "codecov"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,7 +23,6 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "codecov": "^3.6.1",
-    "istanbul": "^0.4.5",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.2",
     "nyc": "^15.0.0"

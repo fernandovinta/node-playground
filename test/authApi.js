@@ -13,9 +13,9 @@ const data = {
 
 describe("Test Authentication API", () => {
 
-  before(function() {
-    User.collection.drop();
-  });
+  before(async () => {
+    await User.remove({})
+  })
 
   it("successful create a new user", done => {
     chai
