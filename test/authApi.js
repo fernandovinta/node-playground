@@ -57,6 +57,20 @@ describe("Test Authentication API", () => {
     });
   });
 
+  it("fail to login user wrong password", done => {
+    chai
+    .request(app)
+    .post("/login")
+    .send({...data, password: "wrong password"})
+    .end((err, res) => {
+      expect(res).to.have.status(200);
+      expect(res.body.user).exist;
+      expect(res.body.token).exist;
+      expect(res.body.user.email).to.equals(data.email)
+      done();
+    });
+  });
+
   it("fail to login user", done => {
     chai
     .request(app)
